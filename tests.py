@@ -52,5 +52,34 @@ class TestBooksCollector:
         collector_5.set_book_genre('1984', 'Фантастика')
         assert collector_5.get_books_genre() == {'1984' : 'Фантастика'}
 
-    def
+    def test_get_books_for_children_getting_book_without_age_rating(self):
+        collector_6 = BooksCollector()
+        collector_6.add_new_book('1984')
+        collector_6.set_book_genre('1984', 'Фантастика')
+        collector_6.add_new_book('Убийства и кексики')
+        collector_6.set_book_genre('Убийства и кексики', 'Детективы')
+        assert collector_6.get_books_for_children() == ['1984']
+
+    def test_add_book_in_favorites_add_book_from_books_genre(self):
+        collector_7 = BooksCollector()
+        collector_7.add_new_book('1984')
+        collector_7.add_book_in_favorites('1984')
+        assert collector_7.favorites == ['1984']
+
+    def test_delete_book_from_favorites_delete_book_which_is_in_favourites(self):
+        collector_8 = BooksCollector()
+        collector_8.add_new_book('1984')
+        collector_8.add_book_in_favorites('1984')
+        collector_8.delete_book_from_favorites('1984')
+        assert collector_8.favorites == []
+
+    def test_get_list_of_favorites_books_get_list_of_books_from_favorites(self):
+        collector_9 = BooksCollector()
+        collector_9.add_new_book('1984')
+        collector_9.add_book_in_favorites('1984')
+        collector_9.add_new_book('Убийства и кексики')
+        collector_9.add_book_in_favorites('Убийства и кексики')
+        assert collector_9.get_list_of_favorites_books() == ['1984', 'Убийства и кексики']
+
+
 
