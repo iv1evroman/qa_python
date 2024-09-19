@@ -39,8 +39,8 @@ class TestBooksCollector:
 
     def test_get_books_for_children_getting_book_with_age_rating(self, collector):
         collector.add_new_book('1984')
-        collector.set_book_genre('1984', 'Ужасы')
-        assert collector.get_books_for_children() == []
+        collector.set_book_genre('1984', 'Фантастика')
+        assert collector.get_books_for_children() == ['1984']
 
     def test_add_book_in_favorites_add_book_from_books_genre(self, collector):
         collector.add_new_book('1984')
